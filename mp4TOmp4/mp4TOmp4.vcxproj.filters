@@ -32,5 +32,8 @@
     <ClCompile Include="mp4TOmp4.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="outputMP4.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
