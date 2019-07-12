@@ -29,13 +29,7 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="mp4TOmp4.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="extractMP4.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="tt.cpp">
+    <ClCompile Include="simpleplayer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

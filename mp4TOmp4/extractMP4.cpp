@@ -8,7 +8,7 @@ extern "C" {
 
 #define ERROR_STR_SIZE 1024
 #define SHOW_VEDIO 1
-int main(int argc, char *argv[]) {
+int main11(int argc, char *argv[]) {
 	int err_code;
 	char errors[1024];
 
