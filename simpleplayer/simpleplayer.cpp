@@ -246,6 +246,11 @@ int main(int argc, char* argv[])
 	{
 		if (packet->stream_index == videostream)
 		{
+			// 时间基转换(等同于SDL_Delay(40);)
+			AVStream *in_stream = pFormatCtx->streams[packet->stream_index];
+			AVRational raw_video_time_base = av_inv_q(pVideoCtx->framerate);
+			av_packet_rescale_ts(packet, in_stream->time_base, raw_video_time_base);
+
 			int ret = avcodec_send_packet(pVideoCtx, packet);
 			if (ret < 0)
 			{
@@ -260,6 +265,7 @@ int main(int argc, char* argv[])
 					return 0;
 				if (ret >= 0)
 				{
+					printf("video dts=%d, pts=%d", packet->dts, packet->pts);
 					sws_scale(img_convert_ctx, (const unsigned char* const*)pVideoFrame->data,
 						pVideoFrame->linesize, 0, pVideoCtx->height, pFrameYUV->data, pFrameYUV->linesize);
 					SDL_UpdateTexture(sdlTexture, NULL, pFrameYUV->data[0], pFrameYUV->linesize[0]);
@@ -267,7 +273,7 @@ int main(int argc, char* argv[])
 					//SDL_RenderCopy( sdlRenderer, sdlTexture, &sdlRect, &sdlRect );  
 					SDL_RenderCopy(sdlRenderer, sdlTexture, NULL, NULL);
 					SDL_RenderPresent(sdlRenderer);
-					SDL_Delay(40);
+					//SDL_Delay(40);
 				}
 			}
 		}
@@ -289,6 +295,7 @@ int main(int argc, char* argv[])
 
 				if (ret >= 0)
 				{
+					printf("audio dts=%d, pts=%d", packet->dts, packet->pts);
 					swr_convert(au_convert_ctx, &out_buffer, MAX_AUDIO_FRAME_SIZE, (const uint8_t **)pAudioFrame->data, pAudioFrame->nb_samples);
 					printf("index:%5d\t pts:%lld\t packet size:%d\n", index, packet->pts, packet->size);
 					index++;
@@ -316,8 +323,8 @@ int main(int argc, char* argv[])
 #endif
 
 	delete packet;
-	//av_free(out_buffer);
-	//avcodec_close(pCodecCtx);
+	av_free(out_buffer);
+	avcodec_close(pCodecCtx);
 	avformat_close_input(&pFormatCtx);
 
 	return 0;
