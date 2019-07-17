@@ -1,8 +1,0 @@
-﻿  simpleplayer.cpp
-g:\ffmpeg\ffmpegmytest\ffmpegmetest\include\libavutil\rational.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-g:\ffmpeg\ffmpegmytest\ffmpegmetest\simpleplayer\simpleplayer.cpp(57): warning C4018: “>”: 有符号/无符号不匹配
-g:\ffmpeg\ffmpegmytest\ffmpegmetest\simpleplayer\simpleplayer.cpp(107): warning C4018: “<”: 有符号/无符号不匹配
-g:\ffmpeg\ffmpegmytest\ffmpegmetest\simpleplayer\simpleplayer.cpp(80): warning C4101: “ret”: 未引用的局部变量
-g:\ffmpeg\ffmpegmytest\ffmpegmetest\simpleplayer\simpleplayer.cpp(82): warning C4101: “got_picture”: 未引用的局部变量
-  simpleplayer.vcxproj -> G:\ffmpeg\ffmpegMyTest\ffmpegmetest\Debug\simpleplayer.exe
-  simpleplayer.vcxproj -> G:\ffmpeg\ffmpegMyTest\ffmpegmetest\Debug\simpleplayer.pdb (Full PDB)
